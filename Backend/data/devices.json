@@ -1,16 +1,94 @@
 {
-    "data": [
-        {
-            "device_id": "12345",
-            "device_name": "Router A",
-            "status": "Online",
-            "location": "Bangalore"
-        },
-        {
-            "device_id": "67890",
-            "device_name": "Switch B",
-            "status": "Offline",
-            "location": "Mumbai"
-        }
-    ]
+  "data": [
+    {
+      "id": 267241455231695,
+      "create_time": "2024-12-04T11:10:04.000+0000",
+      "update_time": "2025-03-17T12:22:45.000+0000",
+      "org_id": 0,
+      "connected": true,
+      "hostname": "Bul-Flo-0017",
+      "healthy_clients": 5,
+      "unhealthy_clients": 2,
+      "system_up_time": 1740043344145,
+      "updated_on": 1738586159688,
+      "mac_address": "241FBD070880",
+      "serial_number": "04002206200017",
+      "device_ip": "10.234.104.70",
+      "default_gateway": "10.234.104.254",
+      "software_version": "10.7.5.0",
+      "product_type": "AP4000",
+      "ipv6_address": "0:0:0:0:0:0:0:0",
+      "device_admin_state": "MANAGED",
+      "sim_type": "REAL",
+      "country_code": 784,
+      "managed_by": "XIQ",
+      "channel_wifi0": "1",
+      "power_wifi0": "11",
+      "radio_wifi0": "2G-20",
+      "channel_wifi1": "124",
+      "power_wifi1": "9",
+      "radio_wifi1": "Test_5g",
+      "channel_wifi2": "5",
+      "power_wifi2": "12",
+      "radio_wifi2": "6G_test",
+      "config_mismatch": true,
+      "locations": {
+        "site": "Site_name",
+        "site_id": 267241455208048,
+        "building": "Building___123",
+        "building_id": 267241455208052,
+        "floor": "NEW2",
+        "floor_id": 267241455234802
+      },
+      "device_category": "WIRELESS",
+      "has_management_ip_issue": false,
+      "has_default_gateway_issue": false,
+      "has_firmware_version_issue": false
+    },
+    {
+      "id": 267241455231696,
+      "create_time": "2024-12-05T08:22:15.000+0000",
+      "update_time": "2025-03-18T10:30:20.000+0000",
+      "org_id": 1,
+      "connected": false,
+      "hostname": "Del-Flo-0008",
+      "healthy_clients": 3,
+      "unhealthy_clients": 1,
+      "system_up_time": 1500000000000,
+      "updated_on": 1738580000000,
+      "mac_address": "241FBD070881",
+      "serial_number": "04002206200018",
+      "device_ip": "10.234.105.80",
+      "default_gateway": "10.234.105.254",
+      "software_version": "10.6.3.0",
+      "product_type": "AP5000",
+      "ipv6_address": "0:0:0:0:0:0:0:0",
+      "device_admin_state": "UNMANAGED",
+      "sim_type": "VIRTUAL",
+      "country_code": 356,
+      "managed_by": "Local",
+      "channel_wifi0": "6",
+      "power_wifi0": "10",
+      "radio_wifi0": "2G-40",
+      "channel_wifi1": "136",
+      "power_wifi1": "8",
+      "radio_wifi1": "Test_5g",
+      "channel_wifi2": "10",
+      "power_wifi2": "14",
+      "radio_wifi2": "6G_test",
+      "config_mismatch": false,
+      "locations": {
+        "site": "Another_Site",
+        "site_id": 267241455208049,
+        "building": "Building___456",
+        "building_id": 267241455208053,
+        "floor": "FLOOR3",
+        "floor_id": 267241455234803
+      },
+      "device_category": "WIRED",
+      "has_management_ip_issue": true,
+      "has_default_gateway_issue": false,
+      "has_firmware_version_issue": true
+    }
+  ]
 }
