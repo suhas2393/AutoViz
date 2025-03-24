@@ -1,0 +1,28 @@
+<div class="header">
+  <button mat-raised-button color="primary" (click)="openAutoVizDialog()">AutoViz</button>
+</div>
+
+<table mat-table [dataSource]="alerts" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let alert"> {{ alert.id }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="alert_type">
+    <th mat-header-cell *matHeaderCellDef> Alert Type </th>
+    <td mat-cell *matCellDef="let alert"> {{ alert.alert_type }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="severity">
+    <th mat-header-cell *matHeaderCellDef> Severity </th>
+    <td mat-cell *matCellDef="let alert"> {{ alert.severity }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let alert"> {{ alert.status }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

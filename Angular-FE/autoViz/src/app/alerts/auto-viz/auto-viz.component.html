@@ -1,0 +1,10 @@
+<mat-card *ngIf="analyzedData">
+  <h2>Analyzed Alert Data</h2>
+  <p><strong>Total Alerts:</strong> {{ analyzedData.total_alerts }}</p>
+  <p><strong>High Severity:</strong> {{ analyzedData.high_severity_alerts }}</p>
+  <p><strong>Warnings:</strong> {{ analyzedData.warning_alerts }}</p>
+  <p><strong>Resolved:</strong> {{ analyzedData.resolved_alerts }}</p>
+  <p><strong>Active:</strong> {{ analyzedData.active_alerts }}</p>
+  <p><strong>Alert Types:</strong> {{ analyzedData.alert_types?.join(', ') }}</p>
+  <button mat-button color="warn" (click)="closeDialog()">Close</button>
+</mat-card>
