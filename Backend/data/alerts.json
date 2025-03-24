@@ -1,0 +1,18 @@
+{
+    "data": [
+        {
+            "id": "a965bb30fea84883a70f5299520b36fb",
+            "timestamp": "2025-03-19T09:55:18Z",
+            "alert_type": "Security",
+            "severity": "High",
+            "status": "Active"
+        },
+        {
+            "id": "f6adfc62a5d64e269db359d391d58288",
+            "timestamp": "2025-03-19T08:39:56Z",
+            "alert_type": "Performance",
+            "severity": "Medium",
+            "status": "Resolved"
+        }
+    ]
+}

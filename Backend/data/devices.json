@@ -1,0 +1,16 @@
+{
+    "data": [
+        {
+            "device_id": "12345",
+            "device_name": "Router A",
+            "status": "Online",
+            "location": "Bangalore"
+        },
+        {
+            "device_id": "67890",
+            "device_name": "Switch B",
+            "status": "Offline",
+            "location": "Mumbai"
+        }
+    ]
+}

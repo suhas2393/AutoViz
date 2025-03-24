@@ -1,0 +1,16 @@
+{
+    "data": [
+        {
+            "client_id": "C001",
+            "client_name": "Company A",
+            "industry": "Finance",
+            "country": "India"
+        },
+        {
+            "client_id": "C002",
+            "client_name": "Company B",
+            "industry": "Healthcare",
+            "country": "USA"
+        }
+    ]
+}
