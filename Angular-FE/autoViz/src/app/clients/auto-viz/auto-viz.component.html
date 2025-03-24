@@ -1,0 +1,21 @@
+<mat-card *ngIf="analyzedData">
+  <h2>Analyzed Clients Data</h2>
+  <p><strong>Total Clients:</strong> {{ analyzedData.total_clients }}</p>
+  <p><strong>Total connected clients:</strong> {{ analyzedData.connected_devices }}</p>
+  <p><strong>Total Unconnected Devices:</strong> {{ analyzedData.unconnected_devices }}</p>
+  <p><strong>Instant Port profile Types:</strong> {{ analyzedData.instant_port_profile_types?.join(', ') }}</p>
+  <p><strong>Management Issues Types:</strong> {{ analyzedData.operating_system_types?.join(', ') }}</p>
+  <p><strong>Username Types:</strong> {{ analyzedData.usernames_types?.join(', ') }}</p>
+
+  <div *ngIf="analyzedData.management_issues">
+    <p><strong>Management Issues Types:</strong></p>
+    <ul>
+      <li *ngFor="let issue of objectKeys(analyzedData.management_issues)">
+        <strong>{{ issue | titlecase }}:</strong> {{ analyzedData.management_issues[issue] }}
+      </li>
+    </ul>
+  </div>
+
+  
+  <button mat-button color="warn" (click)="closeDialog()">Close</button>
+</mat-card>

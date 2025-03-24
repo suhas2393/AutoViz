@@ -1,16 +1,15 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
 import { AlertsService } from '../services/alerts.service';
 import { AutoVizComponent } from './auto-viz/auto-viz.component';
 
 @Component({
   selector: 'app-alerts',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatButtonModule, MatDialogModule, HttpClientModule],
+  imports: [CommonModule, MatTableModule, MatDialogModule, MatButtonModule],
   templateUrl: './alerts.component.html',
   styleUrls: ['./alerts.component.scss']
 })

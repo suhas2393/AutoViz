@@ -72,6 +72,42 @@ def analyze_devices(data):
         "management_issues": management_issues
     }
 
+def analyze_clients(data):
+    clients = data.get("data", [])
+    
+    total_clients = len(clients)
+    connected_clients = sum(1 for c in clients if c.get("connection_status", "Connected"))
+    unconnected_clients = total_clients - connected_clients
+
+    usernames_types = list(set(c.get("username") for c in clients if c.get("username")))
+
+    locations = {}
+    for c in clients:
+        site = c.get("locations", {}).get("site", "Unknown")
+        locations[site] = locations.get(site, 0) + 1
+
+    operating_system_types = list(set(c.get("operating_system") for c in clients if c.get("operating_system")))
+
+    instant_port_profile_types = list(set(c.get("instant_port_profile") for c in clients if c.get("instant_port_profile")))
+
+    management_issues = {
+        "has_ip_address_issues": sum(1 for c in clients if c.get("has_ip_address_issues", False)),
+        "has_port_congestions": sum(1 for c in clients if c.get("has_port_congestions", False)),
+        "has_traffic_anomalies": sum(1 for c in clients if c.get("has_traffic_anomalies", False)),
+        "has_port_errors": sum(1 for c in clients if c.get("has_port_errors", False)),
+    }
+
+    return {
+        "total_clients": total_clients,
+        "usernames_types": usernames_types,
+        "connected_devices": connected_clients,
+        "unconnected_devices": unconnected_clients,
+        "devices_per_location": locations,
+        "operating_system_types": operating_system_types,
+        "instant_port_profile_types": instant_port_profile_types,
+        "management_issues": management_issues
+    }
+
 # API to get analyzed alert data dynamically
 @app.route('/alerts', methods=['GET'])
 def get_alert_analysis():
@@ -105,6 +141,25 @@ def get_device_analysis():
 @app.route('/raw/devices', methods=['GET'])
 def get_raw_devices():
     data = load_data("devices.json")
+    if not data:
+        return jsonify({"error": "Data not found"}), 404
+
+    return jsonify(data)
+
+# API to get analyzed client data
+@app.route('/clients', methods=['GET'])
+def get_clients_analysis():
+    data = load_data("clients.json")
+    if not data:
+        return jsonify({"error": "Data not found"}), 404
+
+    analyzed_data = analyze_clients(data)
+    return jsonify(analyzed_data)
+
+# API to get raw clients data
+@app.route('/raw/clients', methods=['GET'])
+def get_raw_clients():
+    data = load_data("clients.json")
     if not data:
         return jsonify({"error": "Data not found"}), 404
 
