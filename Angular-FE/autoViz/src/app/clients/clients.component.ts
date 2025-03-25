@@ -45,7 +45,7 @@ export class ClientsComponent {
 
   openAutoVizDialog() {
       this.dialog.open(AutoVizComponent, {
-        width: '400px'
+        width: '600px'
       });
   }
 

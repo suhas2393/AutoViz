@@ -17,6 +17,6 @@ export class ClientsService {
 
   // Fetch analyzed alerts
   getAnalyzedClients(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/clients`);
+    return this.http.get(`${this.apiUrl}/analyze?clients`);
   }
 }

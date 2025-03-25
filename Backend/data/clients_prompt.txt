@@ -1,0 +1,30 @@
+Here is a list of network clients data:
+
+{data}
+
+Please analyze this data and provide a summary with the following aggregated information:
+
+1. The total number of connected clients.
+2. A breakdown of the clients per location (site).
+3. A list of unique instant port profile types used.
+4. A count of management issues, including:
+   - Number of clients with IP address issues.
+   - Number of clients with port congestion.
+   - Number of clients with port errors.
+   - Number of clients with traffic anomalies.
+5. A list of unique operating system types.
+6. The total number of clients.
+7. The total number of unconnected clients.
+8. A list of unique usernames.
+9. Give me some insights as well on the data
+
+Please return the result as a json object like this. And always keep same format:
+    "connected_clients": <int>,
+    "clients_per_location": <dict>,
+    "instant_port_profile_types": <list>,
+    "management_issues": <dict>,
+    "operating_system_types": <list>,
+    "total_clients": <int>,
+    "unconnected_clients": <int>,
+    "usernames_types": <list>
+    "insights" : <list>
