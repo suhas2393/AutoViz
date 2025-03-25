@@ -16,6 +16,6 @@ To run backend flask application (make sure python is installed locally)
 
 ```bash
   cd Backend
-  pip install flask
+  pip install -r requirements.txt
   python app.py
 ```
