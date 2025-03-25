@@ -1,5 +1,6 @@
 import os
 import json
+from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 import pandas as pd
 from flask_cors import CORS  # Import CORS
@@ -13,10 +14,13 @@ CORS(app)  # Enable CORS for all routes
 # Directory where JSON files are stored
 DATA_DIR = "data"
 
+# Load environment variables from the .env file
+load_dotenv()
+
 # Set up the client
 endpoint = "https://models.inference.ai.azure.com"
 model_name = "DeepSeek-V3"
-token = "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"
+token = os.getenv('MODEL_ACCESS_TOKEN')
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
