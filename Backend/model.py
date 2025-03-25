@@ -1,20 +1,24 @@
 import os
 import json
+from dotenv import load_dotenv
 from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 from collections import defaultdict
 
+DATA_DIR = "data"
+# Load environment variables from the .env file
+load_dotenv()
+
 # Set up the client
 endpoint = "https://models.inference.ai.azure.com"
 model_name = "DeepSeek-V3"
-token = "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"
+token = os.getenv('MODEL_ACCESS_TOKEN')
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
     credential=AzureKeyCredential(token),
 )
-DATA_DIR = "data"
 
 def load_data(file_name):
     file_path = os.path.join(DATA_DIR, file_name)
