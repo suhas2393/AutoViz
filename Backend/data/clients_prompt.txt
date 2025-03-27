@@ -19,6 +19,6 @@ Please analyze this data and provide a summary with the following aggregated inf
 9. Give me some insights as well on the data
 
 Please return the result as a json object like this. And always keep this format:
-1. Once you get the aggregated information generate highcharts configs for that data. Make different configs for different sets of keys
+1. Once you get the aggregated information generate highcharts configs for the data. Make different configs for different sets of keys. Keep only top 5 charts.
 2. And those configs will be first piece of response as key named highcharts_config and remove the aggregated data. 
-3. At the end add insights as the key and add insights.
+3. At the end add insights as the key and add insights. Give only 5 insights points. should be like a key value. number : insight

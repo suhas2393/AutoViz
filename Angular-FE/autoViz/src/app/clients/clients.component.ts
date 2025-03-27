@@ -5,7 +5,7 @@ import { ClientsService } from '../services/clients.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { Module } from 'ag-grid-community';
-import { AutoVizComponent } from './auto-viz/auto-viz.component';
+import { AutoVizComponent } from '../result-dialog/auto-viz/auto-viz.component';
 @Component({
   selector: 'app-clients',
   standalone: true,

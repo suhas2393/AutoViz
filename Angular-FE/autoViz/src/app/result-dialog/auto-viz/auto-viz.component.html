@@ -6,7 +6,7 @@
 
   <div *ngIf="!loading && analyzedData" class="chart-grid">
     <div *ngFor="let key of objectKeys(analyzedData); let i = index" class="chart-item">
-      <h3>{{ analyzedData[key].title.text }}</h3>
+      <h3>Chart {{i+1}}</h3>
       <highcharts-chart
         [Highcharts]="Highcharts"
         [options]="analyzedData[key]"
