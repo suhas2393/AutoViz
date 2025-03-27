@@ -1,0 +1,44 @@
+{
+    "connected_devices": 10,
+    "devices_per_location": {
+        "San Jose": 5,
+        "Santa Clara": 4,
+        "cappy_east": 1
+    },
+    "instant_port_profile_types": [
+        "default",
+        "profile1",
+        "guest_profile",
+        "profile2",
+        "management"
+    ],
+    "management_issues": {
+        "ip_address_issues": 10,
+        "port_congestion": 3,
+        "port_errors": 5,
+        "traffic_anomalies": 5
+    },
+    "operating_system_types": [
+        "Linux",
+        "Windows",
+        "MacOS"
+    ],
+    "total_clients": 10,
+    "unconnected_devices": 0,
+    "usernames_types": [
+        "admin",
+        "user1",
+        "guest",
+        "user2"
+    ],
+    "insights": [
+        "All devices are connected, with no unconnected devices reported.",
+        "Every device has IP address issues, indicating a potential widespread network configuration or addressing problem.",
+        "Port congestion is less common, affecting only 30% of the devices, while port errors are more prevalent, affecting 50% of the devices.",
+        "Traffic anomalies are present in 50% of the devices, suggesting irregularities in network traffic patterns that may require investigation.",
+        "The most common operating system among the devices is Linux, followed by Windows and MacOS.",
+        "The 'default' instant port profile is the most frequently used, followed by specialized profiles like 'management' and 'guest_profile'.",
+        "The site 'San Jose' has the highest number of connected devices, followed by 'Santa Clara' and 'cappy_east'.",
+        "The usernames 'admin' and 'guest' are the most commonly used, indicating a mix of administrative and guest access across devices."
+    ]
+}

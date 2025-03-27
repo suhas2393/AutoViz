@@ -18,13 +18,7 @@ Please analyze this data and provide a summary with the following aggregated inf
 8. A list of unique usernames.
 9. Give me some insights as well on the data
 
-Please return the result as a json object like this. And always keep same format:
-    "connected_clients": <int>,
-    "clients_per_location": <dict>,
-    "instant_port_profile_types": <list>,
-    "management_issues": <dict>,
-    "operating_system_types": <list>,
-    "total_clients": <int>,
-    "unconnected_clients": <int>,
-    "usernames_types": <list>
-    "insights" : <list>
+Please return the result as a json object like this. And always keep this format:
+1. Once you get the aggregated information generate highcharts configs for that data. Make different configs for different sets of keys
+2. And those configs will be first piece of response as key named highcharts_config and remove the aggregated data. 
+3. At the end add insights as the key and add insights.

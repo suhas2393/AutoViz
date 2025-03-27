@@ -1,5 +1,6 @@
 import os
 import json
+import re
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 import pandas as pd
@@ -128,8 +129,7 @@ def get_analyzed_data():
     )
 
     # Parse and save the response
-    parsed_data = json.loads(response.choices[0].message.content[7:-3])
-
+    parsed_data = json.loads(response.choices[0].message.content[7:-4])
     return parsed_data
 
 # API to get raw clients data
