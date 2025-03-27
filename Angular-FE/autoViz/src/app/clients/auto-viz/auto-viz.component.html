@@ -1,41 +1,19 @@
-<mat-card *ngIf="analyzedData">
-  <h2>Analyzed Clients Data</h2>
-  <p><strong>Total Clients:</strong> {{ analyzedData.total_clients }}</p>
-  <p><strong>Total connected clients:</strong> {{ analyzedData.connected_clients }}</p>
-  <p><strong>Total Unconnected Clients:</strong> {{ analyzedData.unconnected_clients }}</p>
-  
-  <p><strong>Instant Port Profile Types:</strong> {{ analyzedData.instant_port_profile_types?.join(', ') }}</p>
-  
-  <p><strong>Operating System Types:</strong> {{ analyzedData.operating_system_types?.join(', ') }}</p>
-  
-  <p><strong>Username Types:</strong> {{ analyzedData.usernames_types?.join(', ') }}</p>
-
-  <div *ngIf="analyzedData.clients_per_location">
-    <p><strong>Clients per Location:</strong></p>
-    <ul>
-      <li *ngFor="let location of objectKeys(analyzedData.clients_per_location)">
-        <strong>{{ location | titlecase }}:</strong> {{ analyzedData.clients_per_location[location] }}
-      </li>
-    </ul>
+<div class="chart-container">
+  <div *ngIf="loading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Analysing data...</p>
   </div>
 
-  <div *ngIf="analyzedData.insights">
-    <p><strong>Insights:</strong></p>
-    <ul>
-      <li *ngFor="let insight of analyzedData.insights">
-        {{ insight }}
-      </li>
-    </ul>
+  <div *ngIf="!loading && analyzedData" class="chart-grid">
+    <div *ngFor="let key of objectKeys(analyzedData); let i = index" class="chart-item">
+      <h3>{{ analyzedData[key].title.text }}</h3>
+      <highcharts-chart
+        [Highcharts]="Highcharts"
+        [options]="analyzedData[key]"
+        style="width: 100%; height: 400px; display: block;">
+      </highcharts-chart>
+    </div>
   </div>
+</div>
 
-  <div *ngIf="analyzedData.management_issues">
-    <p><strong>Management Issues:</strong></p>
-    <ul>
-      <li *ngFor="let issue of objectKeys(analyzedData.management_issues)">
-        <strong>{{ issue | titlecase }}:</strong> {{ analyzedData.management_issues[issue] }}
-      </li>
-    </ul>
-  </div>
-
-  <button mat-button color="warn" (click)="closeDialog()">Close</button>
-</mat-card>
+<button class="close-btn" (click)="closeDialog()">Close</button>

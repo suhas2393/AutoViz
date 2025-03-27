@@ -2,17 +2,22 @@ import { Component, inject } from '@angular/core';
 import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { HighchartsChartModule } from 'highcharts-angular';
+import * as Highcharts from 'highcharts';
 import { ClientsService } from '../../services/clients.service';
 
 @Component({
   selector: 'app-autoviz-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatCardModule],
+  imports: [CommonModule, MatDialogModule, MatCardModule, HighchartsChartModule],
   templateUrl: './auto-viz.component.html',
   styleUrls: ['./auto-viz.component.scss']
 })
 export class AutoVizComponent {
+  Highcharts: typeof Highcharts = Highcharts;
   analyzedData: any = null;
+  loading = true;
+
   private dialogRef = inject(MatDialogRef<AutoVizComponent>);
   private clientsService = inject(ClientsService);
 
@@ -21,9 +26,13 @@ export class AutoVizComponent {
   }
 
   fetchAnalyzedClients() {
-    this.clientsService.getAnalyzedClients().subscribe((data) => {
-      this.analyzedData = data;
-    });
+    this.clientsService.getAnalyzedClients().subscribe(
+      (data) => {
+        this.analyzedData = data.highcharts_config;
+        this.loading = false;
+      },
+      () => this.loading = false
+    );
   }
 
   objectKeys(obj: any): string[] {

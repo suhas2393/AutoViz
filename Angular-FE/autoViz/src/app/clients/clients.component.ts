@@ -44,9 +44,12 @@ export class ClientsComponent {
   }
 
   openAutoVizDialog() {
-      this.dialog.open(AutoVizComponent, {
-        width: '600px'
-      });
+    this.dialog.open(AutoVizComponent, {
+      width: '90vw',
+      height: '80vh',
+      maxWidth: 'none',
+      panelClass: 'full-width-dialog'
+    });
   }
 
   modules: Module[] = [ClientSideRowModelModule];
