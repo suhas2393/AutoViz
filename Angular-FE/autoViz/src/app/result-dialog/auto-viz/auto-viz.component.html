@@ -16,4 +16,17 @@
   </div>
 </div>
 
+<div *ngIf="!loading" class="insights-container">
+  <button class="dropdown-btn" (click)="toggleInsights()">
+    View Insights
+    <i class="fas arrow-icon" [ngClass]="{'fa-chevron-down': !showInsights, 'fa-chevron-up': showInsights}"></i>
+  </button>
+
+  <div *ngIf="showInsights" class="insights-dropdown">
+    <ul>
+      <li *ngFor="let insight of insightsList">{{ insight }}</li>
+    </ul>
+  </div>
+</div>
+
 <button class="close-btn" (click)="closeDialog()">Close</button>

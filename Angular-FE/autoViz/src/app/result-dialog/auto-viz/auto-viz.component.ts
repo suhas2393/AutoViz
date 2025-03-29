@@ -18,7 +18,10 @@ import { DevicesService } from '../../services/devices.service';
 export class AutoVizComponent {
   Highcharts: typeof Highcharts = Highcharts;
   analyzedData: any = null;
+  analyzedInsights : any = null;
   loading = true;
+  insightsList: string[] = [];
+  showInsights = false;
 
   private dialogRef = inject(MatDialogRef<AutoVizComponent>);
   private clientsService = inject(ClientsService);
@@ -41,6 +44,7 @@ export class AutoVizComponent {
     this.clientsService.getAnalyzedClients().subscribe(
       (data) => {
         this.analyzedData = data.highcharts_config;
+        this.analyzedInsights = data.insights;
         this.loading = false;
       },
       () => this.loading = false
@@ -51,6 +55,7 @@ export class AutoVizComponent {
     this.alertsService.getAnalyzedAlerts().subscribe(
       (data) => {
         this.analyzedData = data.highcharts_config;
+        this.analyzedInsights = data.insights;
         this.loading = false;
       },
       () => this.loading = false
@@ -61,6 +66,7 @@ export class AutoVizComponent {
     this.devicesService.getAnalyzedDevices().subscribe(
       (data) => {
         this.analyzedData = data.highcharts_config;
+        this.analyzedInsights = data.insights;
         this.loading = false;
       },
       () => this.loading = false
@@ -69,6 +75,11 @@ export class AutoVizComponent {
 
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
+  }
+
+  toggleInsights() {
+    this.showInsights = !this.showInsights;
+    this.insightsList = Object.values(this.analyzedInsights);
   }
 
   closeDialog() {
