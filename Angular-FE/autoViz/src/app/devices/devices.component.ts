@@ -15,7 +15,7 @@ import { AutoVizComponent } from '../result-dialog/auto-viz/auto-viz.component';
   styleUrl: './devices.component.scss'
 })
 export class DevicesComponent {
-  private clientService = inject(DevicesService);
+  private devicesService = inject(DevicesService);
     devices: any[] = [];
     rowData : any = [];
     private dialog = inject(MatDialog);
@@ -40,7 +40,7 @@ export class DevicesComponent {
     ];
   
     fetchRawDevices() {
-      this.clientService.getRawDevices().subscribe((data)=>{
+      this.devicesService.getRawDevices().subscribe((data)=>{
         this.devices = data.data;
         this.rowData = this.devices;
       })
@@ -51,7 +51,8 @@ export class DevicesComponent {
         width: '90vw',
         height: '80vh',
         maxWidth: 'none',
-        panelClass: 'full-width-dialog'
+        panelClass: 'full-width-dialog',
+        data: { param: 'devices'}
       });
     }
   

@@ -48,7 +48,8 @@ export class ClientsComponent {
       width: '90vw',
       height: '80vh',
       maxWidth: 'none',
-      panelClass: 'full-width-dialog'
+      panelClass: 'full-width-dialog',
+      data: { param: 'clients'}
     });
   }
 
