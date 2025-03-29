@@ -59,9 +59,9 @@
 .insights-container {
   display: flex;
   flex-direction: column;
-  align-items: center;  /* This centers the button horizontally */
-  justify-content: center;  /* This centers the button vertically in its parent */
-  margin-top: 20px;  /* Space between charts and insights button */
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .dropdown-btn {
@@ -95,6 +95,6 @@
 }
 
 .arrow-icon {
-  margin-left: 15px; /* Space between text and arrow */
-  transition: transform 0.8s ease; /* Smooth transition for rotating the arrow */
+  margin-left: 15px;
+  transition: transform 0.8s ease;
 }
