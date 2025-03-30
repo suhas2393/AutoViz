@@ -4,17 +4,12 @@ Here is a list of network alerts data:
 
 Please analyze this data and provide a summary with the following aggregated information:
 
-1. The total number of alerts.
-2. A breakdown of alerts by severity.
-3. A breakdown of alerts by category.
-4. A count of unresolved alerts.
-5. A breakdown of alerts by site
-6. A list of unique alert rule names.
-7. The total number of acknowledged alerts.
-8. The total number of unacknowledged alerts.
-9. A breakdown of alert counts by source type.
-10. The total number of alerts by severity group.
-11. Give me some insights as well on the data
+1. A breakdown of alerts by severity.
+2. A breakdown of alerts by category.
+3. A breakdown of alerts by site
+4. A breakdown of alerts by acknowlgment status
+5. A breakdown of alert source type.
+6. A breakdown of alerts by severity group.
 
 Please return the result as a json object like this. And always keep this format:
 1. Once you get the aggregated information generate highcharts configs for the data. Make different configs for different sets of keys. Keep only top 5 charts.

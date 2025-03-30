@@ -1,0 +1,12 @@
+{
+    "alerts": [
+      "severity", "category", "acknowledgement", "source", "severity group", "site"
+    ],
+    "devices": [
+      "IP address issues", "default gateway issues", "firmware version issues", "configuration mismatches"
+    ],
+    "clients": [
+      "connection status", "site", "product types", "operating system", "management systems", "unicast", "multicast", "broadcast", "username"
+    ]
+  }
+  

@@ -31,13 +31,16 @@ client = ChatCompletionsClient(
 # Function to load JSON data
 def load_data(file_name):
     file_path = os.path.join(DATA_DIR, file_name)
+
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding="utf-8") as f:
             return json.load(f)
     return None
 
+    
+
 def load_prompt(context):
-    prompt_file = f"{context}_prompt.txt"  # File name based on context (alerts, devices, clients)
+    prompt_file = f"general_prompt.txt"  # File name based on context (alerts, devices, clients)
     file_path = os.path.join(DATA_DIR, prompt_file)
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding="utf-8") as f:
@@ -58,9 +61,12 @@ def get_analyzed_data():
     # Load the prompt for the current context
     prompt_template = load_prompt(context)
 
+    with open('keywords.json', 'r') as file:
+        all_keywords = json.load(file)
+
     # Prepare the prompt by inserting the data dynamically into the prompt template
     if prompt_template:
-        prompt = prompt_template.format(data=json.dumps(data, indent=2))  # Insert the data into the prompt
+        prompt = prompt_template.format(data=json.dumps(data, indent=2),keywords = all_keywords[context])  # Insert the data into the prompt
     else:
         raise ValueError(f"No prompt found for context: {context}")
 

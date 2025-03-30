@@ -31,7 +31,7 @@ export class AlertsComponent {
       { field: 'message_metadata_name', headerName: "Alert Name" },
       { field: 'severity_name', headerName : "Severity" },
       { field: 'category_name', headerName : "Category" },
-      { field: 'acknowledged', headerName : "Status" },
+      { field: 'acknowledged', headerName : "Status",valueGetter: (params : any) => params.data.acknowledged ? 'Acknowledged' : 'Unacknowledged' },
       { field: 'site_name', headerName : "Site" },
       { field: 'source.source_name', headerName : "Source Name" },
     ];

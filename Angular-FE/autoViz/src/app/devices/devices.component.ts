@@ -25,7 +25,7 @@ export class DevicesComponent {
     }
 
     columnDefs : any = [
-      { field: 'connected', headerName : "Connection Status" },
+      { field: 'connected', headerName : "Connection Status" ,valueGetter: (params : any) => params.data.connected ? 'Connected' : 'Disconnected',},
       { field: 'hostname', headerName : "Device Hostname" },
       { field: 'locations.site', headerName: "Site" },
       { field: 'healthy_clients', headerName: "Healthy Clients" },

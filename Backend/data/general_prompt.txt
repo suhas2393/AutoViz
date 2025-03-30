@@ -1,0 +1,10 @@
+Here is a network related data:
+
+{data}
+
+Please analyze this data and provide aggregated information.
+Use {keywords} to get details on what columns the analysis needs to be made. 
+Please return the result as a json object like given below. And always keep this format:
+1. Once you get the aggregated information generate highcharts configs for the data. Make different configs for different sets of keys. Keep any 5 charts. And do not keep charts with very long names in x axis. Always try to keep number along x-axis.
+2. And those configs will be first piece of response as key named highcharts_config and remove the aggregated data. Also keep a time series graph in result if any column in dataset has time data.
+3. At the end add insights as the key and add insights. Give only 5 insights points. should be like a key value. number : insight

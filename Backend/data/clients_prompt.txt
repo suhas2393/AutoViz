@@ -4,19 +4,16 @@ Here is a list of network clients data:
 
 Please analyze this data and provide a summary with the following aggregated information:
 
-1. The total number of connected clients.
+1. A breakdown of the clients as per connection status.
 2. A breakdown of the clients per location (site).
-3. A list of unique instant port profile types used.
-4. A count of management issues, including:
+3. A count of management issues, including:
    - Number of clients with IP address issues.
    - Number of clients with port congestion.
    - Number of clients with port errors.
    - Number of clients with traffic anomalies.
-5. A list of unique operating system types.
-6. The total number of clients.
-7. The total number of unconnected clients.
-8. A list of unique usernames.
-9. Give me some insights as well on the data
+4. A breakdown of the clients based on operating system.
+5. A breakdown of the clients based on unicast, multicast and broadcast.
+8. A breakdown of clients by usernames.
 
 Please return the result as a json object like this. And always keep this format:
 1. Once you get the aggregated information generate highcharts configs for the data. Make different configs for different sets of keys. Keep only top 5 charts.
