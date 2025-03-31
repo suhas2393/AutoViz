@@ -16,7 +16,7 @@ export class DevicesService {
   }
 
   // Fetch analyzed alerts
-  getAnalyzedDevices(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/analyze?devices`);
+  getAnalyzedDevices(columnsData : any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/analyze?devices`,columnsData);
   }
 }

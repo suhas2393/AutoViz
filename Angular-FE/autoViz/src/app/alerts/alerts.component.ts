@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { ClientSideRowModelModule } from 'ag-grid-community';
+import { ClientSideRowModelModule, GridApi } from 'ag-grid-community';
+import { ColumnsToolPanelModule } from 'ag-grid-enterprise';
 import { AlertsService } from '../services/alerts.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { Module } from 'ag-grid-community';
 import { AutoVizComponent } from '../result-dialog/auto-viz/auto-viz.component';
 
 
@@ -20,6 +20,7 @@ export class AlertsComponent {
     alerts: any[] = [];
     rowData : any = [];
     private dialog = inject(MatDialog);
+    private gridApi!: GridApi;
   
     constructor(){
       this.fetchRawAlerts();
@@ -42,6 +43,20 @@ export class AlertsComponent {
         this.rowData = this.alerts;
       })
     }
+
+    onGridReady(params: any) {
+      this.gridApi = params.api; 
+    }
+
+    getCurrentColumns(){
+      const allColumns = this.gridApi.getAllDisplayedColumnGroups();
+      if (allColumns) {
+        const columnData = allColumns.map((column : any) => (column.getColId()));
+        return columnData;
+      } else {
+        return [];
+      }
+    }
   
     openAutoVizDialog() {
       this.dialog.open(AutoVizComponent, {
@@ -49,9 +64,22 @@ export class AlertsComponent {
         height: '80vh',
         maxWidth: 'none',
         panelClass: 'full-width-dialog',
-        data: { param: 'alerts' }
+        data: { param: 'alerts',columns : this.getCurrentColumns() }
       });
     }
   
-    modules: Module[] = [ClientSideRowModelModule];
+    modules: any[] = [ClientSideRowModelModule,ColumnsToolPanelModule];
+
+    sideBar = {
+      toolPanels: [
+        {
+          id: 'columns',
+          labelDefault: 'Columns',
+          labelKey: 'columns',
+          iconKey: 'columns',
+          toolPanel: 'agColumnsToolPanel',
+        }
+      ],
+      defaultToolPanel: ''
+    };
 }

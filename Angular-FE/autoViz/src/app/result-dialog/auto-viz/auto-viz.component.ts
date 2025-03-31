@@ -30,18 +30,18 @@ export class AutoVizComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     if (data.param === 'clients'){
-      this.fetchAnalyzedClients();
+      this.fetchAnalyzedClients(data.columns);
     }
     else if (data.param === 'alerts') {
-      this.fetchAnalyzedAlerts()
+      this.fetchAnalyzedAlerts(data.columns)
     }
     else{
-      this.fetchAnalyzedDevices()
+      this.fetchAnalyzedDevices(data.columns)
     }
   }
 
-  fetchAnalyzedClients() {
-    this.clientsService.getAnalyzedClients().subscribe(
+  fetchAnalyzedClients(columnsData : any) {
+    this.clientsService.getAnalyzedClients(columnsData).subscribe(
       (data) => {
         this.analyzedData = data.highcharts_config;
         this.analyzedInsights = data.insights;
@@ -51,8 +51,8 @@ export class AutoVizComponent {
     );
   }
 
-  fetchAnalyzedAlerts() {
-    this.alertsService.getAnalyzedAlerts().subscribe(
+  fetchAnalyzedAlerts(columnsData : any) {
+    this.alertsService.getAnalyzedAlerts(columnsData).subscribe(
       (data) => {
         this.analyzedData = data.highcharts_config;
         this.analyzedInsights = data.insights;
@@ -62,8 +62,8 @@ export class AutoVizComponent {
     );
   }
 
-  fetchAnalyzedDevices() {
-    this.devicesService.getAnalyzedDevices().subscribe(
+  fetchAnalyzedDevices(columnsData : any) {
+    this.devicesService.getAnalyzedDevices(columnsData).subscribe(
       (data) => {
         this.analyzedData = data.highcharts_config;
         this.analyzedInsights = data.insights;

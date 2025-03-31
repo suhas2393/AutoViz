@@ -15,8 +15,8 @@ export class ClientsService {
     return this.http.get(`${this.apiUrl}/raw/clients`);
   }
 
-  // Fetch analyzed alerts
-  getAnalyzedClients(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/analyze?clients`);
+  // Fetch analyzed clients
+  getAnalyzedClients(columnsData : any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/analyze?clients`,columnsData);
   }
 }

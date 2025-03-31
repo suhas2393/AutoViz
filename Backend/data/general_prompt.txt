@@ -1,10 +1,17 @@
-Here is a network related data:
+I am providing a dataset labeled as {data} which contains various network-related information.
 
-{data}
+1. Keys to Consider: Please focus only on the keys mentioned in {displayedColumns} for analysis. All other keys in the dataset can be ignored.
+2. Use of {keywords}: The {keywords} will guide you on the type of analysis required for the keys in {displayedColumns}. Please ensure that you analyze the keys based on the guidance provided by these keywords.
+3. Output Format: Your output should follow this structure:
+    1. Highcharts Config: The first part of your response should contain the Highcharts configuration (highcharts_config) in JSON format. 
+    Create different chart configurations based on different sets of keys. And keep only line, column, bar and pie types of chart.
+    Ensure that you include at most 5 charts, each representing a different aspect of the data.If the dataset contains any time-related columns, include a time series graph in the result.
+    2. Insights: After the chart configurations, provide 5 key insights under the insights key. 
+    Each insight should be in the form of a key-value pair, where the key is a number (1-5) and the value is a short insight or observation based on your analysis.
+4. Important Notes:
+    1. Keep the response in the JSON format and always follow the same format.
+    2. Only consider the keys listed in {displayedColumns} for analysis and chart generation.
+    3. Make sure that the Highcharts configurations are appropriate for the given data and that each chart focuses on a different perspective of the data.
+    4. If any column contains time-related data, ensure to generate a time series chart.
 
-Please analyze this data and provide aggregated information.
-Use {keywords} to get details on what columns the analysis needs to be made. 
-Please return the result as a json object like given below. And always keep this format:
-1. Once you get the aggregated information generate highcharts configs for the data. Make different configs for different sets of keys. Keep any 5 charts. And do not keep charts with very long names in x axis. Always try to keep number along x-axis.
-2. And those configs will be first piece of response as key named highcharts_config and remove the aggregated data. Also keep a time series graph in result if any column in dataset has time data.
-3. At the end add insights as the key and add insights. Give only 5 insights points. should be like a key value. number : insight
+Please process the dataset as described above and return the response accordingly.

@@ -48,7 +48,7 @@ def load_prompt(context):
     return None
 
 # API to get analyzed client data
-@app.route('/analyze', methods=['GET'])
+@app.route('/analyze', methods=['POST'])
 def get_analyzed_data():
     context = request.query_string.decode('utf-8')
     print(request)
@@ -64,9 +64,12 @@ def get_analyzed_data():
     with open('keywords.json', 'r') as file:
         all_keywords = json.load(file)
 
+    displayedColumns = request.get_json()
+    print("Analysing on these columns : ",displayedColumns)
+
     # Prepare the prompt by inserting the data dynamically into the prompt template
     if prompt_template:
-        prompt = prompt_template.format(data=json.dumps(data, indent=2),keywords = all_keywords[context])  # Insert the data into the prompt
+        prompt = prompt_template.format(data=json.dumps(data, indent=2),keywords = all_keywords[context],displayedColumns = displayedColumns)  # Insert the data into the prompt
     else:
         raise ValueError(f"No prompt found for context: {context}")
 
@@ -76,7 +79,7 @@ def get_analyzed_data():
             "role": "user",
             "content": prompt
         }],
-        max_tokens=1000,
+        max_tokens=2000,
         model=model_name
     )
 
