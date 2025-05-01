@@ -16,7 +16,7 @@ export class AlertsService {
   }
 
   // Fetch analyzed alerts
-  getAnalyzedAlerts(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/analyze?alerts`);
+  getAnalyzedAlerts(columnsData : any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/analyze?alerts`,columnsData);
   }
 }

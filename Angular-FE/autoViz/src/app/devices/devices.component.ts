@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { ClientSideRowModelModule } from 'ag-grid-community';
+import { ClientSideRowModelModule, GridApi } from 'ag-grid-community';
+import { ColumnsToolPanelModule } from 'ag-grid-enterprise';
 import { DevicesService } from '../services/devices.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,13 +20,14 @@ export class DevicesComponent {
     devices: any[] = [];
     rowData : any = [];
     private dialog = inject(MatDialog);
+    private gridApi!: GridApi;
   
     constructor(){
       this.fetchRawDevices();
     }
 
     columnDefs : any = [
-      { field: 'connected', headerName : "Connection Status" },
+      { field: 'connected', headerName : "Connection Status" ,valueGetter: (params : any) => params.data.connected ? 'Connected' : 'Disconnected',},
       { field: 'hostname', headerName : "Device Hostname" },
       { field: 'locations.site', headerName: "Site" },
       { field: 'healthy_clients', headerName: "Healthy Clients" },
@@ -45,6 +47,21 @@ export class DevicesComponent {
         this.rowData = this.devices;
       })
     }
+
+    onGridReady(params: any) {
+      this.gridApi = params.api;
+      this.gridApi.closeToolPanel();
+    }
+  
+    getCurrentColumns(){
+      const allColumns = this.gridApi.getAllDisplayedColumnGroups();
+      if (allColumns) {
+        const columnData = allColumns.map((column : any) => (column.getColId()));
+        return columnData;
+      } else {
+        return [];
+      }
+    }
   
     openAutoVizDialog() {
       this.dialog.open(AutoVizComponent, {
@@ -52,9 +69,22 @@ export class DevicesComponent {
         height: '80vh',
         maxWidth: 'none',
         panelClass: 'full-width-dialog',
-        data: { param: 'devices'}
+        data: { param: 'devices',columns : this.getCurrentColumns() }
       });
     }
   
-    modules: Module[] = [ClientSideRowModelModule];
+    modules: any[] = [ClientSideRowModelModule,ColumnsToolPanelModule];
+
+    sideBar = {
+      toolPanels: [
+        {
+          id: 'columns',
+          labelDefault: 'Columns',
+          labelKey: 'columns',
+          iconKey: 'columns',
+          toolPanel: 'agColumnsToolPanel',
+        }
+      ],
+      defaultToolPanel: ''
+    };
 }

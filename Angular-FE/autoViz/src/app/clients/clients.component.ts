@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { ClientSideRowModelModule } from 'ag-grid-community';
+import { ClientSideRowModelModule, GridApi } from 'ag-grid-community';
+import { ColumnsToolPanelModule } from 'ag-grid-enterprise';
 import { ClientsService } from '../services/clients.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { Module } from 'ag-grid-community';
 import { AutoVizComponent } from '../result-dialog/auto-viz/auto-viz.component';
 @Component({
   selector: 'app-clients',
@@ -19,6 +19,7 @@ export class ClientsComponent {
   clients: any[] = [];
   rowData : any = [];
   private dialog = inject(MatDialog);
+  private gridApi!: GridApi;
 
   constructor(){
     this.fetchRawClients();
@@ -43,16 +44,43 @@ export class ClientsComponent {
     })
   }
 
+  onGridReady(params: any) {
+    this.gridApi = params.api; 
+  }
+
+  getCurrentColumns(){
+    const allColumns = this.gridApi.getAllDisplayedColumnGroups();
+    if (allColumns) {
+      const columnData = allColumns.map((column : any) => (column.getColId()));
+      return columnData;
+    } else {
+      return [];
+    }
+  }
+
   openAutoVizDialog() {
     this.dialog.open(AutoVizComponent, {
       width: '90vw',
       height: '80vh',
       maxWidth: 'none',
       panelClass: 'full-width-dialog',
-      data: { param: 'clients'}
+      data: { param: 'clients',columns : this.getCurrentColumns() }
     });
   }
 
-  modules: Module[] = [ClientSideRowModelModule];
+  modules: any[] = [ClientSideRowModelModule,ColumnsToolPanelModule];
+
+    sideBar = {
+      toolPanels: [
+        {
+          id: 'columns',
+          labelDefault: 'Columns',
+          labelKey: 'columns',
+          iconKey: 'columns',
+          toolPanel: 'agColumnsToolPanel',
+        }
+      ],
+      defaultToolPanel: ''
+    };
 
 }

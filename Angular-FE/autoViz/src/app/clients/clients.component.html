@@ -1,5 +1,5 @@
 <div class="header">
-    <button mat-raised-button color="primary" (click)="openAutoVizDialog()">AutoViz</button>
+    <button mat-raised-button color="primary" (click)="openAutoVizDialog()">Visualize</button>
 </div>
 
 <ag-grid-angular
@@ -7,4 +7,6 @@
     [rowData]="rowData"
     [columnDefs]="columnDefs"
     [modules]="modules"
+    [sideBar]="sideBar"
+    (gridReady)="onGridReady($event)"
 ></ag-grid-angular>
