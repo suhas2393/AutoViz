@@ -13,17 +13,16 @@
 
 ---
 
-## 🛠️ Getting Started
-
-Follow the steps below to set up and run the application locally.
-
-
 ## 🧩Tech Stack
 **Frontend**: Angular
 
 **Backend**: Python Flask
 
 **Charts**: Chart.js / Highcharts / D3.js (based on implementation)
+
+## 🛠️ Getting Started
+
+Follow the steps below to set up and run the application locally.
 
 ### Clone the Repository
 
