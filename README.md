@@ -17,12 +17,6 @@
 
 Follow the steps below to set up and run the application locally.
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/suhas2393/AutoViz.git
-cd AutoViz
-```
 
 ## 🧩Tech Stack
 **Frontend**: Angular
@@ -31,6 +25,12 @@ cd AutoViz
 
 **Charts**: Chart.js / Highcharts / D3.js (based on implementation)
 
+### Clone the Repository
+
+```bash
+git clone https://github.com/suhas2393/AutoViz.git
+cd AutoViz
+```
 
 ## Running the project
 
