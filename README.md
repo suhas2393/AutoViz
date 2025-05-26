@@ -20,6 +20,8 @@
 
 **Charts**: Chart.js / Highcharts / D3.js (based on implementation)
 
+---
+
 ## 🛠️ Getting Started
 
 Follow the steps below to set up and run the application locally.
