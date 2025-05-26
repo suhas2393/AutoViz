@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClientsService {
-  private apiUrl = 'http://127.0.0.1:5000';
+  private apiUrl = 'https://autoviz-backend.onrender.com';
 
   constructor(private http: HttpClient) {}
 
